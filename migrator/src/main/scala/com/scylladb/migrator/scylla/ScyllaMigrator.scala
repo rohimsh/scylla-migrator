@@ -82,6 +82,7 @@ object ScyllaMigrator {
         log.error(
           "Caught error while writing the DataFrame. Will create a savepoint before exiting",
           e)
+        throw e
     } finally {
       for (savePointsManger <- maybeSavepointsManager) {
         savePointsManger.dumpMigrationState("final")
